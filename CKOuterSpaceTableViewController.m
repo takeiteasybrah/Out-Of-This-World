@@ -10,6 +10,7 @@
 #import "AstronomicalData.h"
 #import "CKSpaceObject.h"
 #import "CKSpaceImageViewController.h"
+#import "CKSpaceDataViewController.h"
 
 @interface CKOuterSpaceTableViewController ()
 
@@ -71,6 +72,16 @@
             nextViewController.spaceObject = selectedObject;
         }
     }
+    if ([sender isKindOfClass:[NSIndexPath class]])
+    {
+        if ([segue.destinationViewController isKindOfClass:[CKSpaceDataViewController class]])
+        {
+            CKSpaceDataViewController *targetViewController = segue.destinationViewController;
+            NSIndexPath *path = sender;
+            CKSpaceObject *selectedObject = self.planets[path.row];
+            targetViewController.spaceObject = selectedObject;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -114,6 +125,13 @@
 
     
     return cell;
+}
+
+#pragma mark - UITableiew Delegate
+
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"push to space data" sender:indexPath];
 }
 
 

@@ -19,6 +19,7 @@
 		F1303F221901BEB600328A2F /* Uranus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F1303F181901BEB600328A2F /* Uranus.jpg */; };
 		F1303F231901BEB600328A2F /* Venus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F1303F191901BEB600328A2F /* Venus.jpg */; };
 		F1303F261901BF0500328A2F /* CKSpaceObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F1303F251901BF0500328A2F /* CKSpaceObject.m */; };
+		F173736D19084CDE007839E1 /* CKSpaceDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F173736C19084CDE007839E1 /* CKSpaceDataViewController.m */; };
 		F1D0B57A18F4DEFA0099E8ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D0B57918F4DEFA0099E8ED /* Foundation.framework */; };
 		F1D0B57C18F4DEFA0099E8ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D0B57B18F4DEFA0099E8ED /* CoreGraphics.framework */; };
 		F1D0B57E18F4DEFA0099E8ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D0B57D18F4DEFA0099E8ED /* UIKit.framework */; };
@@ -61,6 +62,8 @@
 		F1303F191901BEB600328A2F /* Venus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Venus.jpg; sourceTree = "<group>"; };
 		F1303F241901BF0500328A2F /* CKSpaceObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKSpaceObject.h; sourceTree = "<group>"; };
 		F1303F251901BF0500328A2F /* CKSpaceObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKSpaceObject.m; sourceTree = "<group>"; };
+		F173736B19084CDE007839E1 /* CKSpaceDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKSpaceDataViewController.h; sourceTree = "<group>"; };
+		F173736C19084CDE007839E1 /* CKSpaceDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKSpaceDataViewController.m; sourceTree = "<group>"; };
 		F1D0B57618F4DEFA0099E8ED /* Out of this World.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Out of this World.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1D0B57918F4DEFA0099E8ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F1D0B57B18F4DEFA0099E8ED /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -148,6 +151,8 @@
 				F1D0B5AF18F4E0060099E8ED /* CKOuterSpaceTableViewController.m */,
 				F1E14B0B1901FEBD009DD11A /* CKSpaceImageViewController.h */,
 				F1E14B0C1901FEBD009DD11A /* CKSpaceImageViewController.m */,
+				F173736B19084CDE007839E1 /* CKSpaceDataViewController.h */,
+				F173736C19084CDE007839E1 /* CKSpaceDataViewController.m */,
 				F1303F241901BF0500328A2F /* CKSpaceObject.h */,
 				F1303F251901BF0500328A2F /* CKSpaceObject.m */,
 				F1D0B59118F4DEFA0099E8ED /* Images.xcassets */,
@@ -307,6 +312,7 @@
 			files = (
 				F1D0B5B018F4E0060099E8ED /* CKOuterSpaceTableViewController.m in Sources */,
 				F1E14B0D1901FEBD009DD11A /* CKSpaceImageViewController.m in Sources */,
+				F173736D19084CDE007839E1 /* CKSpaceDataViewController.m in Sources */,
 				F1D0B58A18F4DEFA0099E8ED /* CKAppDelegate.m in Sources */,
 				F1D0B58618F4DEFA0099E8ED /* main.m in Sources */,
 				F1303F261901BF0500328A2F /* CKSpaceObject.m in Sources */,
