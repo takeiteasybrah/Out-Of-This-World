@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CKAddSpaceObjectViewController.h"
 
-@interface CKOuterSpaceTableViewController : UITableViewController
+@interface CKOuterSpaceTableViewController : UITableViewController <CKAddSpaceObjectViewControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *planets;
+@property (strong, nonatomic) NSMutableArray *addedSpaceObjects;
 
 @end

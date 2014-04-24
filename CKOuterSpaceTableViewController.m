@@ -68,7 +68,14 @@
         {
             CKSpaceImageViewController *nextViewController = segue.destinationViewController;
             NSIndexPath *path = [self.tableView indexPathForCell:sender];
-            CKSpaceObject *selectedObject = [self.planets objectAtIndex:path.row];
+            CKSpaceObject *selectedObject;
+            if (path.section == 0)
+            {
+                selectedObject = self.planets[path.row];
+            }
+            else {
+                selectedObject = self.addedSpaceObjects[path.row];
+            }
             nextViewController.spaceObject = selectedObject;
         }
     }
@@ -78,9 +85,21 @@
         {
             CKSpaceDataViewController *targetViewController = segue.destinationViewController;
             NSIndexPath *path = sender;
-            CKSpaceObject *selectedObject = self.planets[path.row];
+            CKSpaceObject *selectedObject;
+            if (path.section == 0)
+            {
+                selectedObject = self.planets[path.row];
+            }
+            else {
+                selectedObject = self.addedSpaceObjects[path.row];
+            }
             targetViewController.spaceObject = selectedObject;
         }
+    }
+    if ([segue.destinationViewController isKindOfClass:[CKAddSpaceObjectViewController class]])
+    {
+        CKAddSpaceObjectViewController *addSpaceObjectVC = segue.destinationViewController;
+        addSpaceObjectVC.delegate = self;
     }
 }
 
@@ -90,22 +109,48 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - CKAddApaceObjectViewController Delegate
+
+-(void)didCancel
+{
+    NSLog(@"didCancel");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)addSpaceObject:(CKSpaceObject *)spaceObject
+{
+    if (!self.addedSpaceObjects)
+    {
+        self.addedSpaceObjects = [[NSMutableArray alloc] init];
+    }
+    [self.addedSpaceObjects addObject:spaceObject];
+    NSLog(@"addSpaceObject");
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    if ([self.addedSpaceObjects count])
+    {
+        return 2;
+    } else {
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    
-    //return [self.planets count];
-    return [[AstronomicalData allKnownPlanets] count];
+    if (section == 1) {
+        return [self.addedSpaceObjects count];
+    } else {
+        return [self.planets count];
+    }
 }
 
 
@@ -114,10 +159,18 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     // Configure the cell...
-    CKSpaceObject *planet = [self.planets objectAtIndex:indexPath.row];
-    cell.textLabel.text = planet.name;
-    cell.detailTextLabel.text = planet.nickname;
-    cell.imageView.image = planet.spaceImage;
+    
+    if (indexPath.section == 1) {
+        CKSpaceObject *planet = [self.addedSpaceObjects objectAtIndex:indexPath.row];
+        cell.textLabel.text = planet.name;
+        cell.detailTextLabel.text = planet.nickname;
+        cell.imageView.image = planet.spaceImage;
+    } else {
+        CKSpaceObject *planet = [self.planets objectAtIndex:indexPath.row];
+        cell.textLabel.text = planet.name;
+        cell.detailTextLabel.text = planet.nickname;
+        cell.imageView.image = planet.spaceImage;
+    }
     
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
