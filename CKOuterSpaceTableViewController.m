@@ -18,6 +18,25 @@
 
 @implementation CKOuterSpaceTableViewController
 
+#pragma mark - Lazy Instantiation of Properties
+
+-(NSMutableArray *)planets
+{
+    if (!_planets) {
+        _planets = [[NSMutableArray alloc] init];
+    }
+    return _planets;
+}
+
+-(NSMutableArray *)addedSpaceObjects
+{
+    if (!_addedSpaceObjects) {
+        _addedSpaceObjects = [[NSMutableArray alloc] init];
+    }
+    return _addedSpaceObjects;
+}
+
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -36,10 +55,6 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-
-    
-    self.planets = [[NSMutableArray alloc] init];
     
     for (NSMutableDictionary *planetData in [AstronomicalData allKnownPlanets])
     {
@@ -119,11 +134,8 @@
 
 -(void)addSpaceObject:(CKSpaceObject *)spaceObject
 {
-    if (!self.addedSpaceObjects)
-    {
-        self.addedSpaceObjects = [[NSMutableArray alloc] init];
-    }
     [self.addedSpaceObjects addObject:spaceObject];
+    
     NSLog(@"addSpaceObject");
     [self dismissViewControllerAnimated:YES completion:nil];
     
